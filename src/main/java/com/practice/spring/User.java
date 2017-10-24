@@ -1,9 +1,11 @@
 package com.practice.spring;
 
+import java.util.List;
+
 public class User {
 	private String name;
 	private Address address;
-	private Contact contact;
+	private List<Contact> contacts;
 
 	public String getName() {
 		return name;
@@ -21,17 +23,18 @@ public class User {
 		this.address = address;
 	}
 	
-	public Contact getContact() {
-		return contact;
+	public List<Contact> getContacts() {
+		return contacts;
 	}
 
-	public void setContact(Contact contact) {
-		this.contact = contact;
+	public void setContacts(List<Contact> contacts) {
+		this.contacts = contacts;
 	}
-	
+
 	public void display() {
 		System.out.println("Name : "+name);
-		System.out.println("Mobile : "+contact.getMobile()+", Email : "+contact.getEmail());
+		for(Contact c: contacts)
+		System.out.println("Mobile : "+c.getMobile()+", Email : "+c.getEmail());
 		System.out.println("Address : "+address.getCity()+", "+address.getCountry());
 	}
 

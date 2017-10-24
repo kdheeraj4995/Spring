@@ -7,14 +7,22 @@
 	<bean id="user" class="com.practice.spring.User">
 		<property name="name" value="Dheeraj"></property>
 		<property name="address" ref="address" />
-		<property name="contact">
-			<bean class="com.practice.spring.Contact">
-				<property name="mobile" value="7207519669" />
-				<property name="email" value="kdheeraj4995@gmail.com" />
-			</bean>
+		<property name="contacts">
+			<list>
+				<ref bean="contact_1" />
+				<ref bean="contact_2" />
+			</list>
 		</property>
 	</bean>
 	
+	<bean id="contact_1" class="com.practice.spring.Contact">
+		<property name="mobile" value="7207519669" />
+		<property name="email" value="kdheeraj4995@gmail.com" />
+	</bean>
+	<bean id="contact_2" class="com.practice.spring.Contact">
+		<property name="mobile" value="9553070752" />
+		<property name="email" value="dheeraj1947@live.com" />
+	</bean>
 	<bean id="address" class="com.practice.spring.Address">
 		<property name="City" value="Hyderabad" />
 		<property name="Country" value="India" />
