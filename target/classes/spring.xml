@@ -1,12 +1,22 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-   	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<bean id="user" class="com.practice.spring.User">
+	<!-- <context:annotation-config /> -->
+
+	<!-- Used to Scan all the Classes annotated with @Component , @Service , 
+		@Repository and @Controller -->
+	<context:component-scan base-package="com.practice.spring" />
+
+	<bean id="user" class="com.practice.spring.User" init-method="init"
+		destroy-method="destroy">
 		<property name="name" value="Dheeraj"></property>
-		<property name="address" ref="address" />
+		<!-- <property name="address" ref="address" /> -->
 		<property name="contacts">
 			<list>
 				<ref bean="contact_1" />
@@ -14,17 +24,26 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="contact_1" class="com.practice.spring.Contact">
 		<property name="mobile" value="7207519669" />
 		<property name="email" value="kdheeraj4995@gmail.com" />
 	</bean>
+
 	<bean id="contact_2" class="com.practice.spring.Contact">
 		<property name="mobile" value="9553070752" />
 		<property name="email" value="dheeraj1947@live.com" />
 	</bean>
+
 	<bean id="address" class="com.practice.spring.Address">
 		<property name="City" value="Hyderabad" />
 		<property name="Country" value="India" />
 	</bean>
+
+	<bean id="address1" class="com.practice.spring.Address">
+		<property name="City" value="Hyderabad-New" />
+		<property name="Country" value="India-New" />
+	</bean>
+
+
 </beans>
